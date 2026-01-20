@@ -1,4 +1,4 @@
-setcpm(120/4)
+setcps(120/4)
 $: note ("[36 34 41 39]/4")
 .sound("gm_electric_guitar_muted").delay(.5)
 
