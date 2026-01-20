@@ -1,11 +1,10 @@
-setcps(90/60)
+setcps(0.5)
+$: sound("oh*6").gain("[.25 1]/4")
 
-g: n("<[[0,4]]*2>")
-  .scale("c#2:minor").s("supersaw").transpose("<0 2 [3*5 2]>/8")
-  .lpa(0).lpe(7).lpd(0.2).lpr(1).lpf("<[10 10 100]>").dist("8:0.50")
+$: sound("bd*4,[~ sd:1]*2")
 
-s: n("<[[5 ~]*3] 4 4b 3 [1 2 1] 0 [4 5 2] 4 >")
-  .scale("f#4:minor").transpose("<0 4 [3 1]>/8")
-  
-.s("supersaw").lpf(200).dist("8:0.12").room(0.2)
-  .mask("<0@3 1@4 >/8").hush(2)
+$: note("<[f2 e3]*4 [bb1 bb2]*4 [f2 f3]*4 [eb2 eb3]/4>")
+.sound("east jazz").lpf("200 1000")
+
+$: note("<[f2*4,f3*2,c4]>")
+.sound("numbers").vowel("<a e i o>")
