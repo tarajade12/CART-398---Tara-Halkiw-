@@ -1,15 +1,9 @@
-// @title W01-03
-// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
-// @by vigliensoni
-// @date Jan 3, 2026
+setcpm(120/4)
+$: note ("[36 34 41 39]/4")
+.sound("gm_electric_guitar_muted").delay(.5)
 
-// 03
-setcps(130/60/4)
+$: sound("bd*4 hh cr").bank("RolandTR707").delay(.2)
 
-$: s("bd!4 [bd*4]!2 bd!2")
-  .slow(2)
-  .bank("dmx")
-
-$: s("[~ sd]!2")
-  .gain(0.75)
-  .bank("akailinn")
+$: n("< 0*10 2 *10>")
+.scale("f2:minor").sound("gm_accordion:2")
+.room(4).gain(.4)
