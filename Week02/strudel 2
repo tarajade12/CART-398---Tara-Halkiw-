@@ -1,0 +1,6 @@
+setcps(140/60/4)
+
+$: s("bd:3").euclid(3,8).gain(1.2).lpf(180).pan(sine)
+$: s("hh:7*2").euclid(5,16).gain(0.3).hpf(100).delay(0.25)
+
+$: ("<1 [0 4]>").echoWith(4, 1/8, (p,n) => p.add(n*1).scale("c3:minor").note())
