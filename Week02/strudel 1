@@ -1,0 +1,21 @@
+setcps(120/60/4)
+
+d4: s("hh:3*4").gain(0.5)
+
+d1: s("bd(5,8,0)")
+d2: s("bd:2").euclid(5,8).off(1/4, add(4)).delay(0).pan(5).gain(0.2)
+d3: s("cr:4").euclid(5,8).off(1/4, add(0.2)).delay(3).pan(5).gain(0.2)
+d4: s("oh:6").euclid(3,4).off(1/4, add(10)).delay(5).pan(5).gain(0.2)
+
+delay(".8")
+d6: s("space:3").gain(0.1)
+$: s("casio:2*8").gain(0.1)
+$: s("east:5*28").gain(0.1)
+.sound("saw*4")
+$: note("[g3,b3,e4][a3,c3,e4]")
+$: note("g e c e ")
+
+
+d5: s("user").gain(0.1) 
+$: s("rd.:5*8").gain(0.1)  
+.sound("saw").lpf(600).gain(2)
