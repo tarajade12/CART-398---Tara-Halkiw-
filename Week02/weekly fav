@@ -1,0 +1,32 @@
+yes: 'https://cdn.freesound.org/previews/151/151332_2688088-lq.mp3',
+click: 'https://cdn.freesound.org/previews/644/644693_13590673-lq.mp3',
+go: 'https://cdn.freesound.org/previews/625/625810_1540717-lq.mp3',
+cat: 'https://cdn.freesound.org/previews/331/331405_3063784-lq.mp3',
+  })
+setcps (120/80/4)
+d1: s("yes:2").euclid(5,8).off(1/4, add(2)).delay(0.4).pan(1).gain(0.4)
+$: s("kick:4").euclid(3,5).off(1/4, add(1)).delay(0).pan(1).gain(0.2)
+$: s("[go:2*16?0.2|cat:2*1]") .delay(2).pan(1).gain(0.4)
+
+
+setcps(120/60/4)
+
+d4: s("hh:3*4").gain(0.5)
+
+d1: s("bd(5,8,0)")
+d2: s("bd:2").euclid(5,8).off(1/4, add(4)).delay(0).pan(5).gain(0.2)
+d3: s("cr:4").euclid(5,8).off(1/4, add(0.2)).delay(3).pan(5).gain(0.2)
+d4: s("oh:6").euclid(3,4).off(1/4, add(10)).delay(5).pan(5).gain(0.2)
+
+delay(".8")
+d6: s("space:3").gain(0.1)
+$: s("casio:2*8").gain(0.1)
+$: s("east:5*28").gain(0.1)
+.sound("saw*4")
+$: note("[g3,b3,e4][a3,c3,e4]")
+$: note("g e c e ")
+
+
+d5: s("user").gain(0.1) 
+$: s("rd.:5*8").gain(0.1)  
+.sound("saw").lpf(600).gain(2)
