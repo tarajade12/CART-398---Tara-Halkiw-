@@ -1,0 +1,11 @@
+setcps(120/90/4)
+
+stack: s("low:2").euclid(5,8).off(1/8, add(2)) .gain(0)
+
+d4: s("hh:3*4").gain(0.5)
+
+d1: s("bd(5,8,0)")
+d2: s("bd:2").euclid(5,8).off(1/4, add(4)).delay(0).pan(5).gain(0.2)
+$: s("perc:8*2").euclid(5,18).gain(0.2).hpf(100).delay(0)
+$: n("<2*6 3*4 [12*2] -1>*4").scale("f3:minor").jux(rev).dec(5).delay(.05)
+$: n("< 0*8 2 *8>").scale("f2:minor").sound("gm_accordion:2").room(2).gain(.4)
