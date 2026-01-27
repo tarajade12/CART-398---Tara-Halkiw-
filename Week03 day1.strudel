@@ -1,0 +1,8 @@
+setcps(90/60/4)
+
+$: s("low:2").euclid(5,8).off(1/8, add(2)) .gain(1)
+$: s("hh:5*12").gain(0.5)
+$: sound("bd*4,[~ sd:1]*2")
+$: note ("[~44 45 45 45  46 46 46! 46 47 47 47]").sound("gm_electric_guitar_muted").delay(.5) .decay(0.7)
+$: s("bd!4")
+$: s ("[~ ~ ~ sd ~ ~ sd ~]*2")
