@@ -1,0 +1,13 @@
+setcps(120/90/4)
+
+stack: s("low:2").euclid(5,8).off(1/8, add(2)) .gain(0)
+
+samples({
+sub2: 'https://cdn.freesound.org/previews/331/331405_3063784-lq.mp3',
+tone: 'https://cdn.freesound.org/previews/756/756568_12333864-lq.mp3',
+stab: 'https://cdn.freesound.org/previews/625/625810_1540717-lq.mp3',
+})
+
+$: s("sub2:1") .slow(2) .gain(0.6)
+$: s("tone:2?0.3").delay("<0.5 0.75>").pan(1).gain(0.25)
+$: s("stab:4*2").delay("<0.25 0.75>").pan("<-1 1>").gain(0.3)
