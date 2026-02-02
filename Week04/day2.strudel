@@ -1,0 +1,19 @@
+
+setcps(90/60/4)
+
+$: "<[-3,0] [-4,0] [-2,0]>/4".layer(
+
+     x=>x.sub(7).struct("<x*8>").n().s('supersaw').clip(1).lpf("<800>/12").gain(0.6).lpe("<1 1.5 2 2!1>/12"),
+)
+$: "<[0 2 5 0 3 -1 2 3 -1 -2 3 2]>".s('sine').gain("<0 .3 .6!2>/14")
+
+$: s("cr:7*2").euclid(5,16).gain(0.3).hpf(500).delay(0.25)
+$: s("perc:6*4").euclid(5,18).gain(0.8).hpf(100).delay(0)
+
+all(x=>x.room(.8).scale("f3:minor"))
+
+ drm: "<~ 0 [0,1]@6 [1,2]@4~ >/6".pick([
+  s("<[~ hh]*2>"),
+  s("<bd sd [bd [~ bd]] sd [bd <~ bd>] [[sd bd] ~]>*2"),
+  s("<oh:2*8>")
+  ]).bank("RolandTR808").room(1).lpf(1800).gain(2)
