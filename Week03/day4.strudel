@@ -1,0 +1,8 @@
+$: "<[7 6 5 3] [8 7 5 2]>".struct("<x ~ x x>").n().s("sawtooth").gain(0.35).lpf(1000)
+
+$: "<0 ~[1,2]@6 [1,2]@2>/4"
+  .pick([
+    s("<[~ hh]*4>"),
+    s("<bd sd [bd [~ bd]] sd [bd <~ bd>] [[sd bd] ~]>*2"),
+    s("<bd bd sd [sd sd]>")
+  ]).bank("RolandTR808").room(2).lpf("<1200 1000 900>").gain(1)
