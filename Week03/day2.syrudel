@@ -1,0 +1,13 @@
+
+samples({
+bye: 'https://cdn.freesound.org/previews/827/827683_13737430-lq.mp3',
+talk: 'https:cdn.freesound.org/previews/667/667715_1015240-lq.mp3',
+  
+})
+setcps(120/40/8)
+$: s("lay").splice(10,  "0 0 - 1*4")
+$: s("bye").splice(2,  "<[0 0][<1 2> 1][<2 3> 2]> ").gain(0.3)
+$: s("talk").slice(2,"4")
+$: s("bd!4") 
+$: note ("<10 40*2> ~ 30").s("vibraphone_soft")
+$: note("0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9".add("12")).s("piano")
