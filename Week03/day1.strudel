@@ -1,0 +1,24 @@
+
+
+samples({
+lay: 'https://cdn.freesound.org/previews/797/797086_2520418-lq.mp3',
+hi: 'https://cdn.freesound.org/previews/697/697086_14830489-lq.mp3',
+
+  
+})
+
+$: note(scale("C3:ionian", "[0 2 4 7]*2")).s("arpy")
+
+setcps(90/60/4)
+
+$: note ("[~44 45 45 45   46 46 46! 46 47 47 47]").sound("gm_electric_guitar_muted").delay(.25) .decay(0.2). sustain(1). gain(1)
+$: s("bd!4")
+$: s ("[~ ~ ~ sd ~ ~ sd ~]*2")
+$: s("hh:7*2").euclid(5,16).gain(0.3).hpf(1000).delay(0.2)
+
+$: s("[bd ~ ~ hh]*4").cut(4) .gain (0.4)
+$: s("hi").loop(1) .slice(2, "1*8 2*11 1*4 2*2") .cut(0.2) .chop(3) .gain(0.8)
+
+
+$: s("perc:4*2").euclid(5,18).gain(0.2).hpf(100).delay(0)
+$: note("<[f2*4,f3*2,c4]>").sound("numbers").vowel("<a e o o>")
