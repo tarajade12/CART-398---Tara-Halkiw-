@@ -1,0 +1,23 @@
+samples({
+bye: 'https://cdn.freesound.org/previews/827/827683_13737430-lq.mp3',
+talk: 'https:cdn.freesound.org/previews/667/667715_1015240-lq.mp3',
+hi: 'https://cdn.freesound.org/previews/697/697086_14830489-lq.mp3',
+lay: 'https://cdn.freesound.org/previews/797/797086_2520418-lq.mp3'
+  
+})
+setcps(120/40/8)
+$: s("lay").splice(10,  "0 0 - 1*4").gain (1)
+$: s("bye").splice(2,  "<[0  1] - - - [2 1 0][1 2]>").gain(0.75) .delay(0.5)
+$: s("bd!4"). gain (0)
+
+$: "<[7 6 5 3] [8 7 5 2]>".struct("<x ~ x x>").n().s("sawtooth").gain(1).lpf(500)
+
+$: "<0 ~[1,2]@6 [1,2]@2>/4"
+  .pick([
+    s("<[~ bd]*4>"),
+    s("<bd sd [bd [~ bd]] sd [bd <~ bd>] [[sd bd] ~]>*2"),
+    s("<bd cr*4 sd [sd sd]>")
+  ]).bank("RolandTR808").room(2).lpf("<1200 1000 900>").gain(1)
+
+$: s("[bd ~ ~ hh]*4").cut(4) .gain (0.4)
+$: s("hi").loop(1) .slice(2, "1*8 2*11 1*4 2*2") .cut(0.2) .chop(2) .gain(0.8)
