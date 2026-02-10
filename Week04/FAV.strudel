@@ -14,10 +14,14 @@ pad:'https://cdn.freesound.org/previews/716/716430_7981764-lq.mp3'
 setcps(120/60/4)
 
 $: s("bye").cut(12).gain(0.4).slow(4).room(0.8).size(0.9).lpf(800).pan(sine.range(-0.5,0.5).slow(2)).release(1) 
-$: s("[bd*4] bd bd*2")
-  .cut(20)        
-  .gain(0.7)
-  .struct("<x x*2 ~ x*3> <~ x x*4 [x x]> [x x] [x x]")
+$: s("[bd]*2 bd bd*2")
+  .cut(8)        
+  .gain(0.5)
+  .struct("<x x ~ x> <~ x x [x x]> [x x] [x x]")
+  .scope()
+
+$: s("bd!4").gain(0.1)
+  .scope()
   
 $: s("bow")
   .cut(10)
@@ -25,9 +29,13 @@ $: s("bow")
   .struct("<~ x x - x*4>")
   .gain(0.7)
   .delay("<.25>")
+  .lpf("<1150>")
   .end(0.2)             
-  .release(0.2)          
+  .release(0.2)   
+  .scope()
 
+$: s("rim*4").gain(0.2).delay(1).room(0.8)
+.fft()
 
 $: s("note")
   .cut(50)
@@ -35,7 +43,16 @@ $: s("note")
   .gain(0.3)
   .pan(sine.range(-0.7,0.7).slow(6))
   .release(0.2)
+  .scope()
 
+
+$: s("bd")
+  .cut(1)
+  .struct("<~ x x> <x x x>")
+  .gain(0.4)
+  .delay("<0 .1>")
+  .release(0.05)
+  .scope()
 
 $: s("t")
   .cut(5)
@@ -43,7 +60,14 @@ $: s("t")
   .gain(0.2)
   .lpf(1200)
   .release(0.1)
+  .scope()
+
 $: s("<oh:2*8 ->").bank("RolandTR808").room(1).lpf(1800).gain(0.6)
+  .scope(1)
+
+$: s("talk").cut(10).struct("<- - x - x*2 x x*4>").gain(0.8).lpf(1100).release(0.5)
+  .scope()
+
 
 $: s("talk").cut(10).struct("<- - x - x*2 x x*2>").gain(0.8).lpf(1100).release(0.5)
 
