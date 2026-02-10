@@ -1,0 +1,26 @@
+
+samples({
+bye: 'https://cdn.freesound.org/previews/844/844608_922322-lq.mp3',
+chat: 'https://cdn.freesound.org/previews/812/812441_3442171-lq.mp3',
+choir: 'https://cdn.freesound.org/previews/716/716430_7981764-lq.mp3',
+note: 'https://cdn.freesound.org/previews/683/683116_13470105-lq.mp3',
+yes: 'https://cdn.freesound.org/previews/639/639454_8031067-lq.mp3',
+bow: 'https://cdn.freesound.org/previews/487/487490_7295656-lq.mp3'
+  
+})
+
+setcps(120/40/8)
+ note("60 ~ 65")
+$: s("yes")
+$: s("gm_vibraphone")
+$: s("bd:2")
+$: s ("[~ sd:4 ~ cr ~ sd ~]*2")
+$: s("bow").splice(2,  "<[0 2 2 3 4 4 4 2 1] - - - [2 1 0][1 2]>").gain(0.75) .delay(0.5).end(0.3)
+$: "<[7 6 5 3] [8 7 5 2]>".struct("<x ~ x x>").n().s("note").gain(0.3).lpf(500).end(0.2)
+
+$: "<0 ~[1,2]@6 [1,2]@2>/4"
+  .pick([
+    s("<[~ bd]*4>"),
+    s("<bd cr*4[bd [~ bd]] sd [bd <~ bd>] [[sd bd] ~]>*2"),
+    s("<bd cr*4 sd [sd sd]>")
+  ]).sound("chat").room(2).lpf("<1200 1000 900>").gain(0.1)
