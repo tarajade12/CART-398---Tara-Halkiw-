@@ -1,0 +1,31 @@
+setcps(80/40/4)
+samples({
+hi: 'https://cdn.freesound.org/previews/697/697086_14830489-lq.mp3',
+})
+
+//$: note("G# - - C# <E#>")
+//  .sound("piano")
+//.scale("g:minor").gain(0.2) .delay(3).slow(3)
+$: s("bd:5,8").euclid(5,8).off(1/4, add(4)).delay(0).pan(0.5).gain(0.2)
+
+
+$: s("<bd:2*4 ->").bank("RolandTR808").room(1).lpf(800).gain(0.8)
+$: s("bd")
+  .euclid("<3 5 7>",8)
+  .gain(0.3)
+  .slow(4)
+$: s("<bd sd [bd [~ bd]] sd [bd <~ bd>] [[sd bd] ~]>*2").sometimesBy(0.3, fast(2)).every(4, x => x.add("sd"))
+  .scope(1)
+$: s("cr*4 ~").n(irand(2))
+all(x=>x.room(.8).scale("g:minor"))
+
+$: "<[1] [2]>".struct("<x ~ x x>").n().s("triangle").gain(0.35,0.50).lpf(1200)
+$: n("f3 a3 d3 e3").decay(0.1).delay(1).lpf(500).sound("square").gain(1).splice(2,  "<[0  1] - - - [2 1 0][1 2]>").gain(0.9) .delay(0).slow(1)
+$: n("g1 ~ g1 ~")
+  .sound("sine").lpf(900).gain(1).slow(2)
+$: note("<g#4 e#4 c#5 ~>").sound("sqaure").scale("g:minor").slow(4).delay(2).gain(0.5).pan("<-0.3 0.3>")
+$: note("G#2*12 C#3*8 E#5*14")
+  .sound("piano")
+  .slow(2)
+  .room(1)
+  .gain(0.6)
