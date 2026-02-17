@@ -1,0 +1,58 @@
+setcps(80/40/4)
+
+
+$: s("bd:5,8").euclid(5,8).off(1/4, add(4)).delay(0).pan(0.5).gain(0.2)
+
+
+$: s("<bd:2*4 ->").bank("RolandTR808").room(1).lpf(800).gain(0.8)
+$: s("bd")
+  .euclid("<3 5 7>",8)
+  .gain(0.3)
+  .slow(4)
+$: s("<bd sd [bd [~ bd]] sd [bd <~ bd>] [[sd bd] ~]>*2").sometimesBy(0.3, fast(2)).every(4, x => x.add("sd"))
+  .scope(1)
+$: s("cr*4 ~").n(irand(2))
+all(x=>x.room(.8).scale("g:minor"))
+
+$: chord("<Am9 Am7 Cmaj7 Em7>")
+  .dict("ireal")
+  .voicing()
+  .sound("gm_ocarina")
+  .room(0.9)
+  .delay(0.25)
+  .pan(sine.slow(6))
+  .gain("<1>")
+  .mask("<1 1 0 1 0 1!8>/16")
+.phaser(6).phasersweep("<800 2000 4000>")
+
+
+  .jux(x => x.iter(4).slow(8))
+
+$: sound("gm_tremolo_strings").jux(x => x.iter(4).slow(1))
+
+$: n("<g1 [g1 g2]>")
+  .sound("sine")
+  .lpf(600)
+  .gain("<0.4 0.7 1>/16")
+  .slow(2)
+  .room(0.7)
+
+$: n("<g1 g1 [d2 g1] ~>")
+  .sound("square")
+  .lpf(sine.range(200,1100).slow(4))
+  .decay(0.3)
+  .gain("<0.9 0.9 1.1>")
+  .slow(2)
+
+$: n("<g0 ~ g0 ~>")
+  .sound("sine")
+  .slow(16)
+  .lpf(250)
+  .room(1)
+  .gain("<0.6>/2")
+
+$: n("g0")
+  .struct("<x ~ x [x x]>")
+  .sound("sine")
+  .lpf(200)
+  .gain(1.3)
