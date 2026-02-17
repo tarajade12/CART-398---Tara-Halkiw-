@@ -1,0 +1,22 @@
+setcps(2.5)
+
+$: chord("<Am Am7> C/8")
+  .dict("ireal")
+  .voicing()
+  .sound("gm_ocarina")
+  .off(0.2, x => x.velocity("<0.2 0.3>*16"))
+  .room(0.8)
+  .delay(0.1)
+  .gain("<0.8 [0.3]>")
+  .mask("<0 1 1 1!16>/32")
+
+$: sound("gm_pad_new_age")
+  .jux(x => x.iter(9).slow(1))
+
+
+
+$: sound("gm_telephone")
+  .jux(x => x.iter(4).slow(8))
+$: sound("xylophone_hard_ff")
+$: sound("gm_tremolo_strings")
+  .jux(x => x.iter(4).slow(1))
