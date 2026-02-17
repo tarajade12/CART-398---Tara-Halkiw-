@@ -1,0 +1,55 @@
+
+
+samples({
+ 
+  build_vox:   ['snd/vox/build_0.mp3',  'snd/vox/build_1.mp3',  'snd/vox/build_2.mp3',  'snd/vox/build_3.mp3'],
+  guitar: ['snd/perc/guit1.mp3', 'snd/perc/guit2.mp3'],
+}, 'github:lil-data/dj_dave-array_remix/main/');
+
+
+setcps(120/40/8)
+$: s("guitar").splice(4, "0 6 - 1*4").gain (0.2)
+$: s("build_vox").splice(20,  "<[0  1][2 1 0][1 2]>").gain(0.6) .delay(0.3)
+$: s("bd!4").gain(0.4)
+$: note("G#2*12 C#3*8 E#5*14 G#4*6 C#2*8 E#2*14")
+  .sound("piano")
+  .fast(4)
+  .room(0.5)
+  .gain(0.2)
+
+
+$: "<0 ~[1,2]@6 [1,2]@2>/4"
+  .pick([
+    s("<[~ bd]*4>"),
+    s("<bd ht [bd [~ bd]] lt [bd <~ bd>] [[lt ht] ~]>*2"),
+    s("<bd lt*4 lt [lt sd]>")
+  ]).bank("RolandTR808").room(2).lpf("<1200 1000 900>").gain(0.3)
+
+$: s("bd")
+  .lpf(700)
+  .distort(0.15)
+  .gain(0.6)
+  .struct("<x x ~ x> <~ x x [x x]> [x x] [x x]")
+$: s("<ht lt  [ht*2] [lt ~]>")
+  .sometimesBy(0.4, fast(2))
+  .room(1)
+  .gain(0.2)
+
+$: s("<oh:4*8 ->").bank("RolandTR808").room(1).lpf(1800).gain(0.6)
+  .scope(1)
+
+$: note("<d2 f2 g2 bb2 >")
+  .sound("gm_ocarina")
+  .slow(1)
+  .delay(0.4)
+  .lpf(2500)
+  .pan(sine.slow(6))
+  .gain(0.3)
+
+all(x=>x.room(.8).scale("f3:minor"))
+
+ $: "<~ 0 [0,1]@6 [1,2]@4~ >/6".pick([
+  s("<[~ hh]*2>"),
+  s("<bd sd [bd [~ bd]] sd [bd <~ bd>] [[sd bd] ~]>*2"),
+  s("<oh:2*8>")
+  ]).bank("RolandTR808").room(1).lpf(1800).gain(0.4)
