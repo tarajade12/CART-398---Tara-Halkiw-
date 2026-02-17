@@ -1,0 +1,28 @@
+setcps(120/40/4)
+
+$: chord("<Am2 Am4 Cmaj4 Em4>")
+  .dict("ireal")
+  .voicing()
+  .sound("gm_ocarina")
+  .room(0.9)
+  .delay(0.25)
+  .pan(sine.slow(6))
+  .gain("<1>")
+  .mask("<1 1 0 1 0 1!8>/16")
+.phaser(6).phasersweep("<800 2000 4000>")
+
+$: ("[c g]".tour("e f", "e f g", "g f e c").note())
+   .sound("folkharp").gain(0.2)
+   .pace(8)
+
+$: ("c2 c3".fast(2).transpose("<0 -2 5 3>".slow(2)).note()).gain(1)
+
+$: s("<bd:6*4 ->").bank("RolandTR808").room(1).lpf(800).gain(0.8)
+$: s("bd")
+  .euclid("<3 5 7>",8)
+  .gain(0.3)
+
+$: n("0 .. 10").scale("G:minor")
+.s("sawtooth")
+.lpf(200)
+._pitchwheel()
