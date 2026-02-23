@@ -1,0 +1,17 @@
+let sec1 = stack(
+  note("40*4 <50*6>").sound("gm_synth_choir").gain(0.9).legato("<0.25 1>"),
+note("40 42 44 48 55 <50*6>").sound("gm_fx_atmosphere").gain(0.8).legato("<0.25 1>")
+)
+
+let sec2 = stack(
+
+sound("gm_reed_organ").jux(x => x.iter(2).gain(0.7).slow(1)),
+  s("bd:5").euclid(2,4).off(1/4, add(10)).delay(0.5).gain(0.2),
+  s("bd:8").euclid(5,8).off(1/4, add(2)).delay(0.75). gain(0.3),
+  note("50 60 50 60 50").sound("gm_reverse_cymbal").delay(0.75). gain(0.3),
+  note ("<60*5 70*4> ~ 50").s("gm_woodblock").gain(0.5),
+
+)
+arrange(
+  [2, sec1],
+  [8, sec2],
