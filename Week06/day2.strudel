@@ -1,3 +1,5 @@
+setcps(90/60/4)
+
 let sec1 = stack(
   note("40*4 <50*6>").sound("gm_synth_choir").gain(0.9).legato("<0.25 1>"),
 note("40 42 44 48 55 <50*6>").sound("gm_fx_atmosphere").gain(0.8).legato("<0.25 1>")
@@ -15,3 +17,4 @@ sound("gm_reed_organ").jux(x => x.iter(2).gain(0.7).slow(1)),
 arrange(
   [2, sec1],
   [8, sec2],
+  )
