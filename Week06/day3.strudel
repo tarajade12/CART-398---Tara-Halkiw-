@@ -1,0 +1,52 @@
+
+
+let sec1 = stack(
+
+  note("40*4 <47*6>")
+    .sound("gm_pad_glass")
+    .gain(0.7)
+    .legato(1.5)
+    .lpf(sine.range(600,1800).slow(6))
+    .room(0.8)
+    .release(2),
+
+  note("40 43 45 47 52 <47*6>")
+    .sound("gm_voice_oohs")
+    .gain(0.5)
+    .slow(2)
+    .pan(sine.range(-0.7,0.7).slow(8))
+    .room(0.9)
+)
+
+let sec2 = stack(
+
+  note("40 ~ 40 47")
+    .sound("gm_marimba")
+    .gain(0.4)
+    .lpf(900)
+    .room(0.5)
+    .euclid(3,8),
+
+  note("<40 ~ 35 40>")
+    .sound("gm_synth_bass_1")
+    .gain(0.4)
+    .legato(1.2)
+    .lpf(300)
+    .slow(2),
+
+  s("hc*8")
+    .gain(0.2)
+    .hpf(4000)
+    .pan(sine.range(-0.5,0.5).slow(6))
+    .room(0.4),
+  
+  note("47 52 47 ~")
+    .sound("gm_reverse_cymbal")
+    .gain(0.25)
+    .slow(2)
+    .room(0.9)
+)
+
+arrange(
+  [1, sec1],
+  [8, sec2],
