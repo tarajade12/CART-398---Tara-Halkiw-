@@ -1,0 +1,40 @@
+setcps(90/60/4)
+
+let sec1 = stack(
+ note("<d1 g1 f1>").s("wt_digital_echoes").lpf(2500).gain(2),
+ s("rim*4").gain(0.2).delay(1).room(0.8).fft(3),
+    note ("65@ 55, 60, 70 <~>").s("gm_soprano_sax").gain(0.1).legato("<0.25 1>"),
+)
+
+let sec2 = stack(
+
+sound("gm_pad_metallic").jux(x => x.iter(2).gain(0.3).slow(1)),
+   note("<d1 g1 f1>").s("wt_digital_echoes").lpf(1550).gain("<0.2>/8"),
+   note("<55, 63, 65>").sound("gm_church_organ").gain(0.3).legato(0.4).lpf(600).room(0.4),
+  s("bd:5").euclid(2,4).off(1/4, add(10)).delay(0.5).gain(0.3),
+  s("bd:8").euclid(5,8).off(1/4, add(2)).delay(0.75). gain(0.3),
+  note("50 60 50 60").sound("gm_recorder").delay(0.75). gain(0.2),
+  s("<oh:2*8>").gain(0.2),
+  note ("<55, 60>").s("gm_soprano_sax").gain(0.3),
+  note ("<60..80> 50*6").s("gm_fx_atmosphere").gain(0.3),
+
+)
+let sec3 = stack(
+
+ s("rim*4").gain(0.2).delay(1).room(0.8).fft(3),
+  note("<d1 g1 f1>").s("wt_digital_echoes").lpf(5000).gain(2),
+  s("bd:5").euclid(2,4).off(1/4, add(10)).delay(0.5).gain(0.4),
+  s("bd:8").euclid(5,8).off(1/4, add(2)).delay(0.75). gain(0.3),
+    note("<55, 63> 65")
+    .sound("gm_church_organ")
+    .gain(0.4)
+    .legato(0.4)
+    .lpf(600)
+    .room(0.4),
+
+)
+arrange(
+  [8, sec1],
+  [12, sec2],
+  [4, sec3]
+  )
