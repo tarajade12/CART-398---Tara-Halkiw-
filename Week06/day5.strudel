@@ -1,0 +1,24 @@
+$: note("40, 50").sound("gm_synth_bass_2").gain(0.9).legato(0.9).lpf(900).struct("<x x ~ x>")
+
+$: s("<rim ~ rim rim>")
+  .gain(0.22)
+  .hpf(2800)
+
+$: note("40")
+  .sound("gm_fiddle")
+  .gain(0.9)
+  .legato(4)
+  .lpf(300)
+
+$: s("bd")
+  .euclid(5,8)
+  .gain(0.5)
+  .lpf(4000).delay(0.1)
+
+$: note("<40*5> ~ 50 ")
+  .sound("gm_breath_noise")
+  .gain(0.8)
+  .legato(4)
+  .lpf(300)
+
+$: note("[f2*4] <c4>").sound("gm_fx_atmosphere").vowel("<a e o o>").gain(0.9)
