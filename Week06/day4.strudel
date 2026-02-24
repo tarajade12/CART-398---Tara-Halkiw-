@@ -1,0 +1,46 @@
+let sec1 = stack(
+
+  note("<55> <65 63>")
+    .sound("gm_church_organ")
+    .legato(3)
+    .gain(0.7)
+    .lpf(sine.range(200,900).slow(10))
+    .room(0.9)
+    .release(3),
+
+  s("bd").euclid(5,8).off(1/4, add(0)).delay(0.2). gain(0.3),
+)
+let sec2 = stack(
+
+  note("40 ~ ~ 40")
+    .sound("gm_synth_bass_2")
+    .legato(1.2)
+    .gain(0.6)
+    .lpf(180)
+    .euclid(3,8),
+
+   note("55 <65 63>")
+    .sound("gm_music_box")
+    .legato(3)
+    .gain(0.8)
+    .lpf(sine.range(200,900).slow(10))
+    .room(0.9)
+    .release(3),
+
+  s("bd:4")
+    .gain(0.25)
+    .lpf(500)
+    .delay(0.25)
+    .room(0.5)
+    .euclid(5,8),
+
+  s("hh*16")
+    .gain(0.08)
+    .hpf(sine.range(4000,9000).slow(6))
+    .room(0.7)
+)
+
+arrange(
+  [8, sec1],
+  [4, sec2]
+)
