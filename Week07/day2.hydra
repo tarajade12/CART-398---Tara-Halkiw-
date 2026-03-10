@@ -1,0 +1,18 @@
+
+voronoi(10,3,0.25)
+  .modulateScale(osc(8).rotate(Math.sin(time)),.1)
+  .thresh(.6)
+  .modulateRotate(osc(9),.4)
+  .thresh(.7)
+  .diff(src(o0).scale(1.8))
+  .modulateScale(osc(4).modulateRotate(o0,.65))
+  .diff(src(o0).rotate([-12,20,.01,-.002,0]).scrollY(0,[-1/199800,0].fast(0.7)))
+  .brightness([-.02,-.17].smooth().fast(.5))
+  .color(1,0.4,0.4)
+  .kaleid(0.2)
+.modulate(o0,0.001)
+  .out()
+
+  strudel
+
+s("bd:8").euclid(5,8).off(1/4, add(2)).delay(0.25).gain(0.4)
