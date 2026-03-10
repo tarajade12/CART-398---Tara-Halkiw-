@@ -1,16 +1,11 @@
-
-solid(1,1,1)
-  	.diff(shape([4,4,4,24].smooth().fast(.5),r(0.6,0.93),.09).repeat(20,10))
-	.modulateScale(osc(8).rotate(r(-.5,.5)),.52)
-	.add(
-  		src(o0).scale(0.965).rotate(.012*(Math.round(r(-2,1))))
-  		.color(r(),r(),r())
-    	.modulateRotate(o0,r(0,0.5))
-  		.brightness(.15)
-  		,.7)
-	.out()
-
-const h = new Hydra({ makeGlobal: false, detectAudio: false }).synth
-h.osc().diff(h.shape()).out()
-h.gradient().out(h.o1)
-h.render()
+voronoi(8,3,0.25)
+  .modulateScale(osc(8).rotate(Math.sin(time)),.1)
+  .thresh(.6)
+  .modulateRotate(osc(2),0.86)
+  .thresh(0.5)
+  .diff(src(o0).scale(5))
+  .modulateScale(osc(4).modulateRotate(o0,.95))
+  .diff(src(o0).rotate([-12,20,.01,-.002,0]).scrollY(0,[-1/1999800,0].fast(0.7)))
+  .brightness([-.01,-.30].smooth(1).fast(.5))
+  .color(1,0.6,0.2)
+  .out()
