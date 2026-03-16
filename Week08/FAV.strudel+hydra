@@ -1,8 +1,7 @@
 
-
 await initHydra({feedStrudel:1})
 //
-src(s0).kaleid(H("<6 2 2 2 12 -2>"))
+src(s0).kaleid(H("<6 2 12 -2>"))
 .diff(osc(1.6,1,5))
 .color(1.83,0.2,0.1)
 .modulateScale(osc(1,-0.025,6))
