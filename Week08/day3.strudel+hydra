@@ -1,0 +1,18 @@
+await initHydra({feedStrudel:1})
+src(s0).kaleid(H("<12 -16 -2 2 4>"))
+.diff(osc(2,0.4,0.0004))
+.modulateScale(osc(0.5,-0.25,2))
+.out()
+
+$: n("<[[5,8]*2]>")
+  .scale("F:minor").s("supersaw").transpose("<-5:-10>")
+
+$: s("bd:8").euclid(5,8).off(1/4, add(2)).cutoff(100).delay(0.25).gain(0.2)
+$: s("bd:5").euclid(2,4).off(1/4, add(4)).delay(0.5).fft(4).gain(0.2)
+$: s("[bd]*2 bd bd*2").sound("jazz")       
+  .gain(0.9)
+  .struct("<x x ~ x> <~ x x [x x]> [x x] [x x]")
+
+
+
+all(x=>x.fft(4).scope({pos:0,smear:.95}))
