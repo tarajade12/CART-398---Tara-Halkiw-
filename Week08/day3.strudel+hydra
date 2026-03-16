@@ -7,11 +7,12 @@ src(s0).kaleid(H("<12 -16 -2 2 4>"))
 $: n("<[[5,8]*2]>")
   .scale("F:minor").s("supersaw").transpose("<-5:-10>")
 
-$: s("bd:8").euclid(5,8).off(1/4, add(2)).cutoff(100).delay(0.25).gain(0.2)
-$: s("bd:5").euclid(2,4).off(1/4, add(4)).delay(0.5).fft(4).gain(0.2)
+
+$: s("bd:0").euclid(2,4).off(1/4, add(4)).delay(0.5).fft(4).gain(0.2)
 $: s("[bd]*2 bd bd*2").sound("jazz")       
   .gain(0.9)
-  .struct("<x x ~ x> <~ x x [x x]> [x x] [x x]")
+  .struct("<x x*4 ~ x> <~ x*2 x [x x*2]> [x*4 x] [x x]")
+")
 
 
 
