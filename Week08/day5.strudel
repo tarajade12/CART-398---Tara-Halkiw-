@@ -1,0 +1,20 @@
+await initHydra({feedStrudel:1})
+//
+src(s0).kaleid(H("<10 2 4 2 6 2>"))
+.diff(osc(1.6,1,5))
+.color(1.03,0.2,0.1)
+.modulateScale(osc(10,0.09,80))
+.out()
+
+
+
+$: n("<[[5,8]/4 ~ 1,2,3,4*2]>")
+  .scale("F:minor").s("supersaw").lpf(1000).gain(0.8)
+$: s("[bd lt]*4").cutoff(100).gain (0.8)
+
+
+$: n("- - - - - - - - <[[2,4] ~ 2,4 4*2] 6*8>")
+  .scale("F:minor").s("sawtooth").transpose(2,-5).gain(0.4)
+
+
+all(x=>x.fft(6).scope({pos:0,smear:0.95}))
