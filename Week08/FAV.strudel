@@ -1,32 +1,21 @@
-//works on strudel w/hydra
-
-
-
 await initHydra({feedStrudel:1})
-//
-src(s0).kaleid(H("<6 2 12 -2>"))
-.diff(osc(1.6,1,5))
-.color(1.83,0.2,0.1)
-.modulateScale(osc(1,-0.025,6))
+src(s0).kaleid(H("<2 4 6 2 3>"))
+.diff(osc(15,0.002,.10))
+.modulateScale(osc(0.1,-10,8))
 .out()
 
+$: n("<[[5,8]*2]>")
+  .scale("F:minor").s("supersaw").transpose("<-5:-10>")
 
-$: n("<[[5,8] 1,2,3,4 ~*2] ~>")
-  .scale("F:minor").s("supersaw").transpose("<-5:-10>").gain(0.4)
-
-
-$: s("bd:4").euclid(5,8).off(1/4, add(2)).cutoff(100).delay(0.25).gain(0.2)
-$: s("bd:10").euclid(2,4).off(1/4, add(4)).delay(0.5).fft(4).gain(0.2)
+$: s("bd:8").euclid(5,8).off(1/4, add(2)).cutoff(100).delay(0.25).gain(0.2)
+$: s("bd:5").euclid(2,4).off(1/4, add(4)).delay(0.5).fft(4).gain(0.2)
 $: s("[bd]*2 bd bd*2").sound("jazz")       
   .gain(0.9)
   .struct("<x x ~ x> <~ x x [x x]> [x x] [x x]")
 
-$: note("<C3> F2 A2")
-  .sound("gm_ocarina")
-  .gain(0.4)
-  .fast(2)
-  .room(1)
-  .lpf(2000)
+
+
+all(x=>x.fft(9).scope({pos:0,smear:0.95}))
 
 
 
