@@ -1,0 +1,29 @@
+//hydra in strudel
+
+await initHydra({feedStrudel:1})
+//
+src(s0).kaleid(H("<10 2 4 2 8 2>"))
+.diff(osc(1.7,1,5))
+.color(1.83,0.2,0.1)
+.modulateScale(osc(10,0.09,80))
+.out()
+
+
+
+$: n("<[[5,8] 1,2,3,4 ~*2] ~>")
+  .scale("F:minor").s("supersaw").transpose("<-5:-10>").gain(0.3)
+
+
+
+$: note("<C3> F2 A2 ~")
+  .sound("gm_ocarina")
+  .gain(0.5)
+  .slow(2)
+  .room(0.6)
+  .lpf(2000)
+
+$: s("bd*2 bd bd bd ~ bd bd bd ").fft(2).gain(0.7).lpf(200).delay(0.3).pan(-0.1)
+
+
+
+all(x=>x.fft(6).scope({pos:0,smear:0.98}))
