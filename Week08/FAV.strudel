@@ -21,5 +21,4 @@ $: s("~ [~ bd:2] ~ lt").pan(0.1).cutoff(1).gain(0.6).lpf(40)
 
 
 
-all(x=>x.fft(6).scope({pos:0,smear:0.95}))
-
+all(x=>x.fft(6).scope({pos:0,smear:0.99}))
