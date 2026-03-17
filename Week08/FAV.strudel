@@ -2,7 +2,7 @@
 
 await initHydra({feedStrudel:1})
 //
-src(s0).kaleid(H("<10 2 4 2 6 2>"))
+src(s0).kaleid(H("<10 2 6 2 4 2>"))
 .diff(osc(1.6,1,5))
 .color(1.03,0.2,0.1)
 .modulateScale(osc(10,0.09,80))
@@ -20,4 +20,3 @@ $: n("- - - - - - - - <[[2,4] ~ 2,4 4*2] 6*8>")
 
 
 all(x=>x.fft(6).scope({pos:0,smear:0.95}))
-
