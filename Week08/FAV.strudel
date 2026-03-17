@@ -1,22 +1,23 @@
+//this works on strudel and includes hydra
+
 await initHydra({feedStrudel:1})
-src(s0).kaleid(H("<2 4 6 2 3>"))
-.diff(osc(15,0.002,.10))
-.modulateScale(osc(0.1,-10,8))
+//
+src(s0).kaleid(H("<10 2 4 2 6 2>"))
+.diff(osc(1.6,1,5))
+.color(1.03,0.2,0.1)
+.modulateScale(osc(10,0.09,80))
 .out()
 
-$: n("<[[5,8]*2]>")
-  .scale("F:minor").s("supersaw").transpose("<-5:-10>")
-
-$: s("bd:8").euclid(5,8).off(1/4, add(2)).cutoff(100).delay(0.25).gain(0.2)
-$: s("bd:5").euclid(2,4).off(1/4, add(4)).delay(0.5).fft(4).gain(0.2)
-$: s("[bd]*2 bd bd*2").sound("jazz")       
-  .gain(0.9)
-  .struct("<x x ~ x> <~ x x [x x]> [x x] [x x]")
 
 
+$: n("<[[5,8]/4 ~ 1,2,3,4*2]>")
+  .scale("F:minor").s("supersaw").lpf(1000).gain(0.4)
+$: s("[bd lt]*4").cutoff(1).gain (0.8)
 
-all(x=>x.fft(9).scope({pos:0,smear:0.95}))
 
+$: n("- - - - - - - - <[[2,4] ~ 2,4 4*2] 6*8>")
+  .scale("F:minor").s("sawtooth").transpose(2,-5).gain(0.2)
 
 
 all(x=>x.fft(6).scope({pos:0,smear:0.95}))
+
