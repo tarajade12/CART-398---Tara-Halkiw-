@@ -1,0 +1,23 @@
+
+src(o0)
+  .brightness(()=>Math.random()*0.0002)
+  .modulate(noise(1,0.5,3)) .kaleid(() => k())
+  .diff(osc(10.1,0.0006))
+  .color(1.03,1,0.1)
+  .modulateScale(osc(10,0.2,8).kaleid(8).scale(1),0.000002)
+  .out(o0)
+
+
+src(o1)
+.modulate(noise(5,0.1))
+.rotate(10,20,0.1)
+.kaleid(8)
+.diff(osc(10,0,5))
+.color(1.83,0.2,0.1)
+.modulateScale(osc(10,0.09,80))
+.scale(0.5, 5)
+  .out(o1)
+
+
+
+src(o0).blend(src(o1), 0.5)
