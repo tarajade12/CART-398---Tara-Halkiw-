@@ -1,5 +1,3 @@
-let k = () => [4,6,12][(time*2|0)%0.002]
-
 src(o0)
   .brightness(()=>Math.random()*0.000002)
   .modulate(noise(10,0.2,0.002)) .kaleid(() => k())
