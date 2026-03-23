@@ -1,0 +1,20 @@
+let k = () => [4,6,12][(time*2|0)%0.002]
+
+src(o0)
+  .brightness(()=>Math.random()*0.000002)
+  .modulate(noise(10,0.2,0.002)) .kaleid(() => k())
+  .diff(osc(10.1,0.06))
+  .color(1.03,0.8,0.1)
+  .modulateScale(osc(2,0.2,0.03).kaleid(10).scale(1),10,0)
+  .out(o0)
+
+src(o1)
+	.modulate(noise(5,0.1))
+	.color(2.83,0.91,0.39)
+	.rotate(0, 0.1)
+	.modulate(o0, () => mouse.x * 0.0003)
+	.scale(1.01)
+  .out(o1)
+
+
+src(o0).blend(src(o1), 0.5)
