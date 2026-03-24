@@ -1,0 +1,39 @@
+bpm = 120
+speed = bpm/60
+kick = () => Math.pow(Math.sin(time*speed*Math.PI), 12)
+src(o0)
+  .brightness(()=>Math.random()*0.000002 + kick()*0.008 + a.fft[0]*0.002)
+  .modulate(noise(10,0.2,0.002 + a.fft[1]*0.01))
+  .kaleid(() => k() + Math.floor(a.fft[2]*4))
+  .diff(osc(10.1 + kick()*6,0.06))
+  .color(
+    1.03 + a.fft[1]*0.4,
+    0.8 + kick()*0.3,
+    0.1 + a.fft[2]*0.3
+  )
+  .modulateScale(
+    osc(2 + kick()*2,0.2,0.03 + a.fft[1]*0.03)
+      .kaleid(10 + Math.floor(a.fft[2]*6))
+      .scale(1 + kick()*0.3),
+    10 + kick()*15,
+    0
+  )
+  .out(o0)
+
+src(o1)
+  .modulate(noise(5,0.1 + a.fft[0]*0.02))
+   .kaleid(12)
+  .color(
+    2.83,
+    0.91 + a.fft[1]*4,
+    0.5 + kick()*0.4
+  )
+  .rotate(0, 0.1 + a.fft[2]*0.3)
+  .modulate(o0, () => mouse.x * 0.0003 + kick()*0.2)
+  .scale(1.01 + a.fft[1]*0.03 + kick()*0.05)
+  .out(o1)
+
+src(o0)
+  .blend(src(o1), 0.5 + kick()*0.3)
+  .contrast(1 + kick()*0.8)
+  .out()
